@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-  int i, j, size;
+  int i, j, size, min;
   printf("Enter size of array: ");
   scanf("%d", &size);
   int a[size];
@@ -11,12 +11,16 @@ int main()
   }
 
   int temp;
-  for(i = 0; i < size; i++) {
+  for(i = 0; i < size - 1; i++) {
+    min  = i;
     for(j = i + 1; j < size; j++) {
-      if(a[i] > a[j]) {
+      if(a[min] > a[j]) {
+        min = j;
+      }
+      if(min != i) {
         temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
+        a[i] = a[min];
+        a[min] = temp;
       }
     }
   }
